@@ -74,35 +74,6 @@ inline ll modDiv(ll a, ll b)
     b = modInv(b);
     return (a * b) % mod;
 }
-
-// vector<string> v;
-map<char, ll> mp;
-
-vector<string> vs;
-
-void permute(string str, string out)
-{
-    // When size of str becomes 0, out has a
-    // permutation (length of out is n)
-    if (str.size() == 0)
-    {
-        vs.pb(out);
-        return;
-    }
-
-    // One be one move all characters at
-    // the beginning of out (or result)
-    for (int i = 0; i < str.size(); i++)
-    {
-        // Remove first character from str and
-        // add it to out
-        permute(str.substr(1), out + str[0]);
-
-        // Rotate string in a way second character
-        // moves to the beginning.
-        rotate(str.begin(), str.begin() + 1, str.end());
-    }
-}
 bool isPrime(ll n)
 {
     for (ll i = 2; i * i <= n; i++)
@@ -111,18 +82,6 @@ bool isPrime(ll n)
             return false;
     }
     return true;
-}
-ll ncr(ll nn, ll rr)
-{
-    if (rr > nn)
-        return 0;
-    if (rr == 0)
-        return 1;
-    if (rr == 1)
-        return nn;
-    if (nn == rr)
-        return 1;
-    return ncr(nn - 1, rr - 1) + ncr(nn - 1, rr);
 }
 bool compare(pair<ll, pair<ll, ll>> p1, pair<ll, pair<ll, ll>> p2)
 {
