@@ -140,20 +140,60 @@ int main()
     // ll c=0;
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    ll t;
-    cin >> t;
-    while (t--)
-    {
-        ld n, m;
-        cin >> n;
 
-        ld ans = 360 / (180 - n);
-        ll ans2 = ans;
-        if (ans == ans2)
-            cout << "YES\n";
-        else
-            cout << "NO\n";
-    }
+    // avoiding collision using unordered_map only in CF
+    //map_name.load_factor(0.25);
+    //map_name.reserve(1024);
+
+    // #ifndef ONLINE_JUDGE
+    //     freopen("D:/Code_c++/input.txt", "r", stdin);
+    //     freopen("D:/Code_c++/output.txt", "w", stdout);
+    // #endif
+   ll n,m;
+   char c;
+   ll k=1;
+   ll t;
+   cin>>t;
+   while(t--)
+   {
+     
+       ll a,b,c;
+       cin>>a>>b>>c;
+       if(a==b and a==c)
+       cout<<1<<" "<<1<<" "<<1<<endl;
+       else
+       {
+           ll maxi = max(max(a,b),c);
+           if(maxi==a and maxi==b)
+           {
+            //a = 0;
+            cout<<1<<" "<<1<<" "<<(maxi-c)+1<<endl;
+           }
+           else if(maxi==a and maxi==c)
+           {
+               //b = 0;
+               cout<<1<<" "<<(maxi-b)+1<<" "<<1<<endl;
+           }
+           else if(maxi==b and maxi==c)
+           {
+              // c = 0;
+               cout<<(maxi-a)+1<<" "<<1<<" "<<1<<endl;
+           }
+           else if(maxi==a)
+           {
+               cout<<0<<" "<<(maxi-b)+1<<" "<<(maxi-c)+1<<endl;
+           }
+           else if(maxi==b)
+           {
+               cout<<(maxi-a)+1<<" "<<0<<" "<<(maxi-c)+1<<endl;
+           }
+           else if(maxi==c)
+           {
+               cout<<(maxi-a)+1<<" "<<(maxi-b)+1<<" "<<0<<endl;
+           }
+
+       }
+   }
 
     return 0;
 }

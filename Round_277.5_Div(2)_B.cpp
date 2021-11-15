@@ -1,4 +1,3 @@
-//Round_636_Div(3)_1343_(C).cpp
 ///Bismillahir Rahmanir Rahim
 #include <bits/stdc++.h>
 
@@ -141,36 +140,37 @@ int main()
     // ll c=0;
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    ll t;
-    cin >> t;
-    while (t--)
-    {
-        ll n;
-        cin>>n;
-        ll arr[n];
-        //vector<ll>v_neg,v_pos;
-        for(ll i=0;i<n;i++)
-        {
-          cin>>arr[i];
-        }
-        ll ans=0;
-        ll j;
-        for(ll i=0;i<n;)
-        {
-            ll maxi = arr[i];
-            for(j=i;j<n and (arr[i]>0 and arr[j]>0) or (arr[i]<0 and arr[j]<0);j++)
-            {
-                maxi = max(maxi,arr[j]);
-                
-            }
-            i = j;
-            ans+=maxi;
-        }
-        cout<<ans<<"\n";
-     
-        }
     
+    ll n,m;
+    cin>>n;
+    vector<ll>v1(n);
+    for(int i=0;i<n;i++)
+    cin>>v1[i];
 
+    cin>>m;
+    vector<ll>v2(m);
+    for(ll i=0;i<m;i++)
+    cin>>v2[i];
+    
+    ll cnt=0;
+     sort(v1.begin(),v1.end());
+     sort(v2.begin(),v2.end());
+    for(ll i=0;i<v1.size();i++)
+    {
+        for(ll j=0;j<v2.size();j++)
+        {
+            if(abs(v1[i]-v2[j])<=1)
+            {
+                cnt++;
+                v2.erase(v2.begin()+j);
+                break;
+
+            }
+        }
+    }
+    cout<<cnt<<"\n";
+
+   
     return 0;
 }
 //1000000007

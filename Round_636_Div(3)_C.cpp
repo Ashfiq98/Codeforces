@@ -1,3 +1,4 @@
+//Round_636_Div(3)_1343_(C).cpp
 ///Bismillahir Rahmanir Rahim
 #include <bits/stdc++.h>
 
@@ -140,51 +141,36 @@ int main()
     // ll c=0;
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
-    ll n;
-    cin>>n;
-    ll arr[n];
-    map<ll,ll>mp;
-    for(ll i=0;i<n;i++)
+    ll t;
+    cin >> t;
+    while (t--)
     {
-        cin>>arr[i];
-        mp[arr[i]]++;
-    }
-     ll total=0;
-     total+=mp[4]+mp[3];
-      ll baki=0;
-      ll lagbe=0;
-    if(mp[1]>mp[3])
-        baki = mp[1]-mp[3];
+        ll n;
+        cin>>n;
+        ll arr[n];
+        //vector<ll>v_neg,v_pos;
+        for(ll i=0;i<n;i++)
+        {
+          cin>>arr[i];
+        }
+        ll ans=0;
+        ll j;
+        for(ll i=0;i<n;)
+        {
+            ll maxi = arr[i];
+            for(j=i;j<n and (arr[i]>0 and arr[j]>0) or (arr[i]<0 and arr[j]<0);j++)
+            {
+                maxi = max(maxi,arr[j]);
+                
+            }
+            i = j;
+            ans+=maxi;
+        }
+        cout<<ans<<"\n";
+     
+        }
+    
 
-     baki=baki+(mp[2]*2);
-     if(baki%4==0)
-     total+=baki/4;
-     else if(baki!=0 and baki<4)
-     {
-       total++;
-     }
-     else if(baki!=0)
-     total+=(baki/4)+1;
-    // if(baki>mp[2])
-    // {
-    //     lagbe = mp[2]*2;
-    //     if(baki<=lagbe)
-    //     {
-    //         total+=mp[2];
-    //     }
-    //     else
-    //     {
-    //         total+=mp[2];
-    //         total+=(baki-mp[2]);
-    //     }
-    // }
-    // else
-    // {
-    //     total+=ceil((double)mp[2]/2.0));
-    // }
-    cout<<total<<"\n";
-   
     return 0;
 }
 //1000000007
